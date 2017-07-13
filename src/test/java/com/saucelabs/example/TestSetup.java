@@ -49,7 +49,7 @@ public class TestSetup {
   private AndroidDriver createDriver(String platformName, String platformVersion, String deviceName, String methodName) throws MalformedURLException {
   	
       DesiredCapabilities capabilities = new DesiredCapabilities();
-      capabilities.setCapability("testobject_api_key", "ADD_API_KEY_HERE");
+      capabilities.setCapability("testobject_api_key", System.getenv("TO_API_KEY"));
       capabilities.setCapability("deviceName", deviceName);
       capabilities.setCapability("platformVersion", platformVersion);
       capabilities.setCapability("platformName", platformName);
@@ -57,7 +57,7 @@ public class TestSetup {
       capabilities.setCapability("appiumVersion", "1.6.5");
 
       driver.set(new AndroidDriver<WebElement>(
-              new URL("http://us1.appium.testobject.com/wd/hub"),
+              new URL("http://eu1.appium.testobject.com/wd/hub"),
               capabilities));
       return driver.get();
   }
