@@ -42,7 +42,7 @@ public class TestSetup {
       return new Object[][]{
     		  //Verify that your account has access to the devices below
           new Object[]{"Android", "Samsung Galaxy S6", "6"},
-          new Object[]{"Android", "Google Pixel", "7"}
+          new Object[]{"Android", "Google Pixel", "8"}
       };
   }
 
