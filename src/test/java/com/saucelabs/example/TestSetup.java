@@ -30,7 +30,7 @@ public class TestSetup {
 
     private ResultReporter reporter;
     private ThreadLocal<AndroidDriver> driver = new ThreadLocal<AndroidDriver>();
-  
+
   /**
    * DataProvider that explicitly sets the browser combinations to be used.
    *
@@ -41,20 +41,19 @@ public class TestSetup {
   public static Object[][] sauceBrowserDataProvider(Method testMethod) {
       return new Object[][]{
     		  //Verify that your account has access to the devices below
-              new Object[]{"Android", "Samsung Galaxy S6", "6"},
-              new Object[]{"Android", "Google Pixel", "7"}
+          new Object[]{"Android", "Samsung Galaxy S6", "6"},
+          new Object[]{"Android", "Google Pixel", "7"}
       };
   }
-  
+
   private AndroidDriver createDriver(String platformName, String platformVersion, String deviceName, String methodName) throws MalformedURLException {
-  	
+
       DesiredCapabilities capabilities = new DesiredCapabilities();
-      capabilities.setCapability("testobject_api_key", System.getenv("TO_API_KEY"));
+      capabilities.setCapability("testobject_api_key", System.getenv("TESTOBJECT_API_KEY"));
       capabilities.setCapability("deviceName", deviceName);
       capabilities.setCapability("platformVersion", platformVersion);
       capabilities.setCapability("platformName", platformName);
       capabilities.setCapability("name",  methodName);
-      capabilities.setCapability("appiumVersion", "1.6.5");
 
       driver.set(new AndroidDriver<WebElement>(
               new URL("http://eu1.appium.testobject.com/wd/hub"),
@@ -96,7 +95,7 @@ public class TestSetup {
         reporter.saveTestStatus(sessionId, success);
         driver.quit();
     }
-    
+
     /**
      * @return the {@link WebDriver} for the current thread
      */
